@@ -1,9 +1,18 @@
 # Write2Learn
 
-### 🌐 Chrome Web Store
+## Home
+
+- [write2Learn](https://write2learn.top/)
+
+## Donate(捐助)
+
+- [Buy me a coffee](https://ko-fi.com/write2learn)
+- [请我喝一杯快乐水](https://donate.write2learn.top/)
+
+## 🌐 Chrome Web Store
 - [Chrome Web Store - Write2Learn](https://chromewebstore.google.com/detail/write2learn-%E2%80%94-%E8%BE%93%E5%85%A5%E8%AE%B0%E5%BF%86%E3%80%81%E6%99%BA%E8%83%BD%E5%A4%8D%E4%B9%A0%E3%80%81a/idnmponmplgbcdeloigenfdooelojchm?authuser=0&hl=zh-CN)
 
-### 🎥 Video Tutorials
+## 🎥 Video Tutorials
 - [YouTube - Write2Learn](https://www.youtube.com/watch?v=7K_PpihvzpQ)
 - [Bilibili - Write2Learn](https://www.bilibili.com/video/BV1dTeCeoENA/?spm_id_from=333.999.0.0&vd_source=d11af339428cfd986c18cd04082bafc9)
 
