@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>Write2Learn</title>
+  <link rel="stylesheet" type="text/css" href="popup.css">
+</head>
+<body>
+  <div class="navbar">
+    <button class="navlink active" data-tab="info">Info</button>
+    <button class="navlink" data-tab="settings">Settings</button>
+    <button class="navlink" data-tab="donate">Donate</button>
+    <button class="navlink" data-tab="custom">Custom</button>
+  </div>
+  
+  <div id="info" class="tabcontent">
+    <div class="words-learned-container">
+      <div class="words-learned-row">
+        <p class="words-learned-text">Words Learned Today:</p>
+        <span class="words-count" id="todayWordsCount">0</span>
+      </div>
+      <div id="todayWordsProgressContainer">
+        <div id="todayWordsProgressBar"></div>
+      </div>
+    </div>
+    <div class="words-learned-container">
+      <div class="words-learned-row">
+        <p class="words-learned-text">Words to Review:</p>
+        <span class="words-count" id="reviewWordsCount">0</span>
+      </div>
+    </div>
+    <div class="words-learned-container">
+      <div class="words-learned-row">
+        <p class="words-learned-text">Total Words Learned:</p>
+        <span class="words-count" id="totalWordsCount">0</span>
+      </div>
+      <div id="totalWordsProgressContainer">
+        <div id="totalWordsProgressBar"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="settings" class="tabcontent" style="display:none;">
+    <label for="modelSelect">Choose AI Model:</label>
+    <select id="modelSelect">
+      <option value="chatglm">ChatGLM</option>
+      <option value="chatgpt" selected>ChatGPT</option>
+      <option value="qwen">Qwen</option>
+      <option value="deepseek">DeepSeek</option>
+      <option value="kimi">Moonshot(kimi)</option>
+      <option value="doubao">Doubao</option>
+    </select>
+    <br><br>
+    <label for="modelName">Model Name:</label>
+    <input type="text" id="modelName" placeholder="Enter the model to call">
+    <br><br>
+    <label for="apiKey">Local Storage API Key:</label>
+    <input type="password" id="apiKey" placeholder="Enter your API key">
+    <br><br>
+    <button id="saveSettings">Save Settings</button>
+    <button id="clearKeys" class="clear">Clear All Keys</button>
+  </div>
+
+  <div id="donate" class="tabcontent" style="display:none;">
+    <div class="words-learned-container">
+      <div class="words-learned-row">
+        <p class="donate-text">Support me by donating through the following platforms:</p>
+      </div>
+      <ul class="donate-list">
+        <a href="https://ko-fi.com/write2learn" target="_blank"><li class="donate-item">Buy me a coffee ☕️</li></a>
+        <a href="https://donate.write2learn.top" target="_blank"><li class="donate-item">请我喝一杯快乐水 🥤</li></a>
+        <a href="https://write2learn.top" target="_blank"><li class="donate-item">Home 🏠</li></a>
+        <a href="https://privacy-policy.write2learn.top/" target="_blank"><li class="donate-item">Privacy Policy 📄</li></a>
+      </ul>
+    </div>
+  </div>
+
+  <div id="custom" class="tabcontent" style="display:none;">
+    <button id="exportData">Export Data</button>
+    <input type="file" id="importDataFile" style="display: none;" accept=".json">
+    <label for="importDataFile" class="custom-file-upload">
+      Import Data
+    </label>
+    <button id="clearAllData" class="clear">Clear All Data</button>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

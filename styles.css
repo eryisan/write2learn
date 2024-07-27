@@ -1,0 +1,667 @@
+/* 侧边栏按钮 ----------------------------------------------> */
+#my-wtl-button {
+  position: fixed;
+  bottom: 10px;
+  right: -30px; 
+  width: 70px;
+  height: 35px;
+  background: linear-gradient(to right, #d4fc79, #96e6a1);
+  border-radius: 15px; 
+  z-index: 10000;
+  cursor: pointer;
+  transition: right 0.3s; 
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 10px;
+  color: black;
+  font-size: 15px;
+  font-weight: bold;
+  font-family: Times, sans-serif;
+}
+
+#my-wtl-button:hover {
+  right: -15px;
+  font-weight: bold;
+  background: linear-gradient(to left, #d4fc79, #96e6a1);
+}
+
+#wtl-float-button {
+  font-size: 15px;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+#wtl-float-button:hover {
+  transform: translate(-3px,-3px);
+}
+
+/* 替换问号样式 ----------------------------------------------> */
+
+.wtl-placeholder {
+  background: linear-gradient(to left, #e7f8f0, #f0f4f2); 
+  color: #4caf50;
+  padding: 3px 5px;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+
+/* 弹出窗口 布局 ----------------------------------------------> */
+
+#wtl-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: linear-gradient(to left, #e7f8f0, #f0f4f2); 
+  border: 1px solid #d1d9e6;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  color: #475569;
+  width: 450px;
+  height: 450px;
+  box-sizing: border-box;
+  font-size: 15px;
+  position: relative;
+}
+
+#wtl-container .switch-container {
+  position: absolute;
+  top: -25px;
+  left: 170px;
+  height: 25px;
+  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 18px;
+  box-sizing: border-box;
+}
+
+#wtl-container .switch-container button{
+  cursor: pointer;
+  background: linear-gradient(to left, #e7f8f0, #f0f4f2); 
+  border-radius: 8px;
+  border: none;
+  padding: 2px 8px;
+  margin: 0;
+}
+
+#wtl-container .switch-container button:hover{
+  transform: translate(-3px,-3px);
+}
+
+#wtl-container .content-container {
+  flex-grow: 1;
+  overflow-y: auto;
+  max-height: 400px;
+}
+
+#wtl-container .content-container::-webkit-scrollbar {
+  display: none;
+}
+
+#wtl-container .content-container .model-info {
+  margin: 10px 0px;
+}
+
+#wtl-container .error {
+  color: red;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+#wtl-container .info {
+  color: #4CAF50;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+/* 弹出窗口  工具箱 ----------------------------------------------> */
+#wtl-container .tools-container {
+  display: flex;
+  height: 25px;
+  flex-shrink: 0;
+  align-items: center; 
+  justify-content: space-evenly;
+  font-size: 15px;
+  gap: 2px;
+}
+
+#wtl-container .tools-container button {
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+#wtl-container .tools-container button:hover {
+  transform: translate(-2px,-2px);
+}
+
+/* 弹出窗口 输入框和提交按钮 ----------------------------------------------> */
+#wtl-container .fill-container {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  background-color: #f0f4f2; 
+  width: 100%; 
+  max-height: 100px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box; 
+}
+
+/* Input style */
+#wtl-container .fill-container .wtl-fill-blank {
+  flex-grow: 1;
+  max-height: 100px;
+  overflow-y: auto;
+  resize: none;
+  padding: 5px 10px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background-color: #f0f4f2; 
+  box-shadow: none;
+  font-size: 16px;
+  box-sizing: border-box; 
+  transition: all 0.3s ease-in-out; 
+}
+
+/* Button style */
+#wtl-container .fill-container button {
+  box-sizing: border-box;
+  height: 100%;
+  background: none;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 10px;
+  transition: 0.25s;
+  font-size: 16px;
+}
+
+#wtl-container .fill-container button:hover {
+  transform: translate(-3px,-3px);
+}
+
+/* 弹出窗口 等待加载提示 ----------------------------------------------> */
+
+#wtl-container .loader{
+  font-size: 32px;
+  color: #475569;
+  display: inline-block;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  position: relative;
+}
+#wtl-container .loader:before{
+  content: '';
+  animation: 5s print linear alternate infinite;
+}
+#wtl-container .loader:after{
+  content: '';
+  position: absolute;
+  right: -4px;
+  top: 50%;
+  transform: translatey(-45%);
+  width: 2px;
+  height: 1.3em;
+  background: currentColor;
+  opacity: 0.8;
+  animation: 1s blink steps(2) infinite;
+}
+
+@keyframes blink {
+  0%  { visibility: hidden;}
+  100%  { visibility: visible;}
+}
+@keyframes print {
+  0% { content: 'L'}
+  10% { content: 'Lo'}
+  20% { content: 'Loa'}
+  30% { content: 'Load'}
+  40% { content: 'Loadi'}
+  50% { content: 'Loadin'}
+  60% { content: 'Loading'}
+  70% { content: 'Loading.'}
+  80% { content: 'Loading..'}
+  90% , 100% { content: 'Loading...'}
+}
+
+/* 弹出窗口 写句子练习 ----------------------------------------------> */
+#wtl-container .wtl-change-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+#wtl-container .wtl-change-container button,
+#wtl-container .interactive-options button {
+  padding: 5px 8px;
+  background: none;
+  border-radius: 8px;
+  color: black;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ddd;
+  cursor: pointer;
+  text-align: center;
+  margin-bottom: 5px;
+  margin-left: 5px;
+}
+
+#wtl-container .interactive-options button {
+  background-color: #fee2e2;
+  border-left: 5px solid #ef4444;
+}
+
+#wtl-container .wtl-change-container button:hover,
+#wtl-container .interactive-options button:hover {
+  transform: translate(-3px,-3px);
+}
+
+
+
+#wtl-container .wtl-interactive-container pre{
+  font-size: 15px;
+  padding: 10px;
+  white-space: pre;
+  overflow-x: auto;
+}
+
+#wtl-container .wtl-interactive-container pre input{
+  margin: 2px 0px;
+  height: 30px;
+  width: 135px;
+  outline: none;
+  font-weight: 500;
+  background: #F3F3F3;
+  padding: 5px 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: none;
+  border-radius: 8px;
+}
+
+#wtl-container .wtl-interactive-container pre input:focus {
+  background: #fff;
+  outline: 0;
+  box-shadow: 0 0 0 0 #fff inset, #4CAF50 0 0 0 3px;
+}
+
+#wtl-container .wtl-interactive-container .part-of-speech-tagging pre{
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+
+/* 弹出窗口 单词记录数据 ----------------------------------------------> */
+
+#wtl-container .info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+#wtl-container .info-item .info-title {
+  display: flex;
+  align-items: center;
+  color: #475569;
+}
+
+#wtl-container .info-item .info-value {
+  color: #475569;
+}
+
+#wtl-container .bg-red-100 {
+  background-color: #fee2e2;
+  border-left: 5px solid #ef4444;
+}
+
+#wtl-container .bg-yellow-100 {
+  background-color: #fef9c3;
+  border-left: 5px solid #f59e0b;
+}
+
+#wtl-container .bg-green-100 {
+  background-color: #d1fae5;
+  border-left: 5px solid #10b981;
+}
+
+#wtl-container .bg-blue-100 {
+  background-color: #dbeafe;
+  border-left: 5px solid #3b82f6;
+}
+
+#wtl-container .wtl-delete-button {
+  display: inline-block;
+  text-align: center;
+  background: black;
+  color: white;
+  width: 100%;
+  font-size: 13px;
+  padding: 5px 0px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#wtl-container .wtl-delete-button:hover {
+  box-shadow: 2px 2px 0 #000;
+  transform: translate(-2px,-2px);
+}
+
+/* 弹出窗口 词典 ----------------------------------------------> */
+#wtl-container .property-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#wtl-container .property-container .search-container {
+  display: flex;
+  align-items: center;
+  height: 35px;
+}
+
+#wtl-container .property-container .search-container input {
+  flex-grow: 1;
+  height: 100%;
+  outline: none;
+  font-size: 15px;
+  font-weight: 500;
+  background-color: #f0f4f2;
+  padding: 5px 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: none;
+  border-top-left-radius: 7px;
+  border-bottom-left-radius: 7px;
+  margin-right: 1px;
+  transition: all .2s ease;
+}
+
+#wtl-container .property-container .search-container button {
+  border: none;
+  cursor: pointer;
+  background-color: #f0f4f2;
+  border-top-right-radius: 7px;
+  border-bottom-right-radius: 7px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  height: 100%;
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#wtl-container .property-container .search-container button:hover {
+  transform: translate(-3px,-3px);
+}
+
+
+#wtl-container .wtl-show-translation {
+  align-self: flex-end;
+  padding: 5px 8px;
+  background: none;
+  border-radius: 8px;
+  color: black;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ddd;
+  cursor: pointer;
+  text-align: center;
+}
+
+#wtl-container .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+#wtl-container .part-of-speech {
+  margin-right: 10px;
+  font-weight: bold;
+  color: #007FFF;
+}
+
+#wtl-container .answer-box {
+  display: flex;
+  align-items: center;
+  padding: 5px 8px;
+  background: none;
+  border-radius: 8px;
+  color: black;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ddd;
+  cursor: pointer;
+  text-align: center;
+}
+
+#wtl-container .word-text {
+  font-size: 1.2em; 
+  font-weight: bold; 
+  text-transform: capitalize; 
+  margin-right: 10px;
+}
+
+#wtl-container .pronunciation-text {
+  font-size: 0.8em; 
+  color: #888; 
+}
+
+#wtl-container .wtl-play-audio {
+  text-decoration: none;
+  margin-left: 10px;
+}
+
+#wtl-container .body {
+  padding: 10px;
+}
+
+#wtl-container .definition-box {
+  margin-top: 10px;
+}
+
+#wtl-container .definition-content {
+  padding: 5px 8px;
+  background: #F3F3F3;
+  border-radius: 8px;
+  color: black;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+}
+
+#wtl-container .definition-text {
+  margin: 0;
+  padding: 0;
+}
+
+#wtl-container .definition-translation {
+  margin: 0;
+  padding: 0;
+}
+
+#wtl-container .example-box {
+  padding-left: 20px;
+}
+
+#wtl-container .example-box ul {
+  padding: 0;
+}
+
+#wtl-container div.example-box li {
+  padding: 5px 0;
+  margin: 0;
+}
+
+#wtl-container .wtl-show-others {
+  width: 100%;
+  padding: 5px 8px;
+  margin-top: 10px;
+  background: none;
+  border-radius: 8px;
+  color: black;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ddd;
+  cursor: pointer;
+  text-align: center;
+}
+
+#wtl-container .answer-box:hover,
+#wtl-container .wtl-show-others:hover,
+#wtl-container .wtl-show-translation:hover {
+  box-shadow: 2px 2px 0 #000;
+  transform: translate(-2px,-2px);
+}
+
+/* 添加Prompt容器和输入框样式 ----------------------------------------------> */
+#wtl-container .prompt-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #f0f4f2;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#wtl-container .prompt-container textarea {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  resize: none;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+#wtl-container .prompt-container .prompt-name {
+  height: 40px;
+  overflow: hidden;
+}
+
+#wtl-container .prompt-container .prompt-text {
+  height: 180px;
+}
+
+#wtl-container .prompt-container .wtl-save-prompt {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 5px 10px;
+  background: linear-gradient(to right, #96e6a1, #d4fc79);
+  border: none;
+  border-radius: 8px;
+  color: black;
+  font-size: 14px;
+  cursor: pointer;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+#wtl-container .prompt-container .wtl-save-prompt:hover {
+  box-shadow: 2px 2px 0 #000;
+  transform: translate(-2px, -2px);
+}
+
+
+/* Prompt列表容器和元素样式 ----------------------------------------------> */
+#wtl-container .prompt-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #f0f4f2;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#wtl-container .prompt-list-container .prompt-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 10px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#wtl-container .prompt-list-container .prompt-checkbox {
+  margin-right: 10px;
+}
+
+#wtl-container .prompt-list-container .wtl-delete-prompt {
+  background: none;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  color: #ef4444;
+  font-size: 14px;
+}
+
+#wtl-container .prompt-list-container .wtl-delete-prompt:hover {
+  text-decoration: underline;
+}
+
+#wtl-container .prompt-list-container .wtl-save-selected-prompt {
+  width: 100%;
+  padding: 5px 10px;
+  background: linear-gradient(to right, #96e6a1, #d4fc79);
+  border: none;
+  border-radius: 8px;
+  color: black;
+  font-size: 14px;
+  cursor: pointer;
+  transition: transform 0.25s, box-shadow 0.25s;
+  margin-top: 10px;
+}
+
+#wtl-container .prompt-list-container .wtl-save-selected-prompt:hover {
+  box-shadow: 2px 2px 0 #000;
+  transform: translate(-2px, -2px);
+}
+
+/* 显示Prompt按钮容器和元素样式 ----------------------------------------------> */
+#wtl-container .show-prompt-container {
+  display: flex;
+  overflow: hidden;
+  height: 30px;
+  flex-shrink: 0;
+  gap: 5px;
+  margin-bottom: 5px;
+}
+
+#wtl-container .show-prompt-container .wtl-fill-prompt {
+  background-color: #e7f8f0;
+  color: #475569;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 3px 3px;
+  cursor: pointer;
+  transition: transform 0.25s, box-shadow 0.25s;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+#wtl-container .show-prompt-container .wtl-fill-prompt:hover {
+  box-shadow: 2px 2px 0 #000;
+  transform: translate(-2px, -2px);
+}
+

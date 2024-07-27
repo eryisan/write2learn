@@ -1,0 +1,203 @@
+/* popup.css */
+
+body {
+  font-family: Arial, sans-serif;
+  width: 250px;
+  padding: 0;
+  background: linear-gradient(to left, #e7f8f0, #f0f4f2); 
+}
+
+h1, h2 {
+  color: #333;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+}
+
+select:hover {
+  cursor: pointer;
+}
+
+input, 
+select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  width: 100%;
+  padding: 5px 0px;
+  text-align: center;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all .14s ease-out;
+  margin-top: 10px;
+}
+
+button:hover {
+  box-shadow: 2px 2px 0 #000;
+  transform: translate(-2px,-2px);
+}
+
+.clear {
+  background: black;
+  color: white;
+}
+
+.clear:hover {
+  box-shadow: 2px 2px 0 #000;
+  transform: translate(-2px,-2px);
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+ul li {
+  background: #eee;
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background: #ddd;
+  margin: 20px 0;
+}
+
+#totalWordsProgressContainer, #todayWordsProgressContainer {
+  width: 100%;
+  background-color: #f3f3f3;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin: 10px 0;
+  height: 20px;
+  position: relative;
+}
+
+#totalWordsProgressBar, #todayWordsProgressBar {
+  height: 100%;
+  background-color: #4CAF50;
+  width: 0;
+  border-radius: 4px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  gap: 2px;
+  margin-bottom: 20px;
+}
+
+.navlink {
+  flex: 1;
+  padding: 3px;
+  background-color: #e7f8f0;
+  text-align: center;
+  color: black;
+  cursor: pointer;
+}
+
+.navlink:hover {
+  box-shadow: 2px 2px 0 #000;
+  transform: translate(-2px,-2px);
+}
+
+.navlink.active {
+  border-bottom: 5px solid #000;
+  font-weight: bold;
+}
+
+.words-learned-container {
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.words-learned-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.words-learned-text {
+  font-size: 12px;
+  color: #777;
+  margin: 0;
+}
+
+.words-count {
+  font-weight: bold;
+  font-size: 28px;
+  color: #333;
+}
+
+.donate-text {
+  font-size: 15px;
+  color: #333;
+  margin: 0 0 10px 0;
+}
+
+.donate-list {
+  padding: 0;
+  list-style: none;
+}
+
+.donate-list a {
+  text-decoration: none;
+  color: #4CAF50;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.donate-item {
+  padding: 10px;
+  margin: 5px 0;
+  background: none;
+  border-radius: 8px;
+  color: black;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ddd;
+  cursor: pointer;
+  text-align: center;
+}
+
+.donate-item:hover {
+  box-shadow: 2px 2px 0 #000;
+  transform: translate(-2px,-2px);
+}
+
+.custom-file-upload {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 5px 0px;
+  text-align: center;
+  display: block;
+  width: 100%;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.custom-file-upload:hover {
+  box-shadow: 2px 2px 0 #000;
+  transform: translate(-2px,-2px);
+}

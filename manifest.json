@@ -1,0 +1,46 @@
+{
+  "manifest_version": 3,
+  "name": "Write2Learn — 输入记忆、智能复习、AI语法分析的高效学习助手",
+  "version": "1.0.1",
+  "description": "Write2Learn — An Efficient Learning Assistant for Input Memory, Smart Review, and AI Grammar Analysis",
+  "permissions": [
+    "storage",
+    "offscreen"
+  ],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "css": [ 
+        "markdown.css",
+        "styles.css"
+      ],
+      "js": [
+        "markdown-it.min.js",
+        "content.js"
+      ]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "images/icon16.png",
+      "36": "images/icon36.png",
+      "48": "images/icon48.png",
+      "128": "images/icon128.png",
+      "256": "images/icon256.png",
+      "512": "images/icon512.png"
+    }
+  },
+  "icons": {
+    "16": "images/icon16.png",
+    "36": "images/icon36.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png",
+    "256": "images/icon256.png",
+    "512": "images/icon512.png"
+  }
+}
