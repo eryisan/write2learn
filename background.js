@@ -236,7 +236,7 @@ async function getAIProcessConfig(sendResponse) {
   const apiUrl = apiUrls[selectedModel];
 
   if (!apiKey || !modelName) {
-    sendResponse({ error: 'Settings incomplete. Please check API key and model name.' });
+    sendResponse({ error: '设置不完整。请检查API Key和模型名称。' });
     return {};
   }
 

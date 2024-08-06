@@ -22,7 +22,7 @@
   let buffers = {
     'wtl-analyze': '',
     'wtl-diagram': '',
-    'wtl-chat-summit': '',
+    'wtl-chat-ai': '',
     'wtl-word-context': ''
   };
   let inCodeBlock = false;
@@ -173,8 +173,8 @@
         interactiveOptions = document.createElement('div');
         interactiveOptions.classList.add('interactive-options');
         interactiveOptions.innerHTML = `
-          <button class="interactive-cambridge">📕 Cambridge Dictionary</button>
-          <button class="interactive-word-context">💭 Word in Context</button>
+          <button class="interactive-cambridge">📕 剑桥词典</button>
+          <button class="interactive-word-context">💭 情景对话中理解单词</button>
         `;
         input.closest('.part-of-speech-tagging').insertAdjacentElement('beforeend', interactiveOptions);
       }
@@ -365,27 +365,27 @@
       component.innerHTML = `
         <div class="property-container">
           <div class="search-container">
-            <input type="text" autocomplete="off" class="context-input" placeholder="💭 AI Word in Context">
+            <input type="text" autocomplete="off" class="context-input" placeholder="💭 AI 情景对话中理解单词">
             <button class="context-btn">💭</button>
           </div>
           <div class="search-container">
-            <input type="text" autocomplete="off" class="cambridge-input" placeholder="📕 Cambridge Dictionary">
+            <input type="text" autocomplete="off" class="cambridge-input" placeholder="📕 剑桥词典">
             <button class="cambridge-btn">📕</button>
           </div>
           <div class="search-container">
-            <input type="text" autocomplete="off" class="collins-input" placeholder="📘 Collins Dictionary">
+            <input type="text" autocomplete="off" class="collins-input" placeholder="📘 柯林斯词典">
             <button class="collins-btn">📘</button>
           </div>
           <div class="search-container">
-            <input type="text" autocomplete="off" class="conjugation-input" placeholder="📗 Collins Conjugation">
+            <input type="text" autocomplete="off" class="conjugation-input" placeholder="📗 柯林斯词典 - 动词变位">
             <button class="conjugation-btn">📗</button>
           </div>
           <div class="search-container">
-            <input type="text" autocomplete="off" class="analyze-input" placeholder="🤖 AI Analyze Sentence">
+            <input type="text" autocomplete="off" class="analyze-input" placeholder="🤖 AI 分析句子">
             <button class="analyze-btn">🤖</button>
           </div>
           <div class="search-container">
-            <input type="text" autocomplete="off" class="diagram-input" placeholder="📊 AI Diagram Sentence">
+            <input type="text" autocomplete="off" class="diagram-input" placeholder="📊 AI 图解句子">
             <button class="diagram-btn">📊</button>
           </div>
         </div>
@@ -529,7 +529,7 @@
         <button class="wtl-prompt-list">🧾</button>
       </div>
       <div class="fill-container">
-        <textarea rows="1" class="wtl-fill-blank" data-word="${word}" data-sentence="${sentence}" placeholder="Enter the word"></textarea>
+        <textarea rows="1" class="wtl-fill-blank" data-word="${word}" data-sentence="${sentence}" placeholder="输入单词"></textarea>
         <button class="wtl-check-word">🔍</button>
       </div>
     </div>
@@ -565,13 +565,13 @@
 
     const textarea = document.querySelector('#wtl-popup .wtl-fill-blank');
     if (textarea) {
-        textarea.placeholder = 'Enter your message to chat with AI';
+        textarea.placeholder = '输入消息与AI聊天';
     }
   }
 
   // 处理聊天AI的函数
   async function handleChat(inputText) {
-    replaceComponentContent('wtl-chat-summit', '<span class="loader"></span>');
+    replaceComponentContent('wtl-chat-ai', '<span class="loader"></span>');
 
     conversation.push({ role: 'user', content: inputText });
     if (conversation.length > 12) {
@@ -581,7 +581,7 @@
 
     const response = await chrome.runtime.sendMessage({ action: 'getChatAi', conversation });
     if (response.error) {
-      replaceComponentContent('wtl-chat-summit',`
+      replaceComponentContent('wtl-chat-ai',`
         <div><h3>Error chatting with AI:</h3><p class="error">${response.error}</p></div>
       `);
       conversation = [];
@@ -702,22 +702,22 @@
   function generateRecordContent(wordObject) {
     return `
       <div class="info-item bg-red-100">
-        <span class="info-title">Count</span>
+        <span class="info-title">已学次数</span>
         <span class="info-value">${wordObject.count} / 5</span>
       </div>
       <div class="info-item bg-yellow-100">
-        <span class="info-title">Last Studied</span>
+        <span class="info-title">上次学习</span>
         <span class="info-value">${wordObject.lastStudied}</span>
       </div>
       <div class="info-item bg-green-100">
-        <span class="info-title">Review Interval</span>
+        <span class="info-title">复习间隔</span>
         <span class="info-value">${wordObject.reviewInterval} days</span>
       </div>
       <div class="info-item bg-blue-100">
-        <span class="info-title">Review Date</span>
+        <span class="info-title">复习日期</span>
         <span class="info-value">${wordObject.reviewDate}</span>
       </div>
-      <button class="wtl-delete-button" data-word="${wordObject.word}">Delete Word</button>
+      <button class="wtl-delete-button" data-word="${wordObject.word}">删除单词</button>
     `;
   }
 
@@ -799,9 +799,9 @@
   function handleAddPrompt() {
     replaceComponentContent('wtl-add-prompt', `
       <div class="prompt-container">
-        <textarea class="prompt-name" rows="1" placeholder="Enter prompt name"></textarea>
-        <textarea class="prompt-text" placeholder="Enter prompt text, \${sentence} as the sentence reference, \${word} as the word reference, or \${sentence-word}"></textarea>
-        <button class="wtl-save-prompt">Save Prompt</button>
+        <textarea class="prompt-name" rows="1" placeholder="输入 提示词Prompt 标题"></textarea>
+        <textarea class="prompt-text" placeholder="输入 提示词Prompt 文本, \${sentence} 引用划选句子, \${word} 引用划选单词, 或者 \${sentence-word}"></textarea>
+        <button class="wtl-save-prompt">保存 提示词Prompt</button>
       </div>
     `);
   }
@@ -855,10 +855,10 @@
             <div class="prompt-item">
               <input type="checkbox" class="prompt-checkbox" data-name="${prompt.name}" ${selectedPrompts.includes(prompt.name) ? 'checked' : ''}>
               <span>${prompt.name}</span>
-              <button class="wtl-delete-prompt" data-name="${prompt.name}">Delete</button>
+              <button class="wtl-delete-prompt" data-name="${prompt.name}">删除</button>
             </div>
           `).join('')}
-          <button class="wtl-save-selected-prompt">Save Selected Prompts</button>
+          <button class="wtl-save-selected-prompt">保存选择</button>
         </div>
       `;
       replaceComponentContent('wtl-prompt-list', content);
@@ -1285,6 +1285,7 @@
     removeLoader(targetClass);
 
     buffers[targetClass] += data;
+
     if (inCodeBlock) {
       const endCodeBlock = buffers[targetClass].indexOf('```', 3);
       if (endCodeBlock !== -1) {

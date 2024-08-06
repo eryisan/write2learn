@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Write2Learn — 输入记忆、智能复习、AI语法分析的高效学习助手",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "Write2Learn — An Efficient Learning Assistant for Input Memory, Smart Review, and AI Grammar Analysis",
   "permissions": [
     "storage",
